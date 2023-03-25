@@ -1,0 +1,28 @@
+mat-toolbar {
+    height: 72px;
+    display: inline-flex;
+    justify-content: space-between;
+    h1 {
+        margin: 0;
+        padding: 18px 16px;
+    }
+    nav {
+        ul {
+            list-style: none;
+            display: flex;
+        }
+        li {
+            display: inline-flex;
+            align-items: center;
+            padding: 24px 18px;
+            cursor: pointer;
+
+            .mat-icon {
+                margin-right: 11px;
+            }
+            &:hover, &.active {
+                background-color: #1773BB;
+            }
+        }
+    }
+}

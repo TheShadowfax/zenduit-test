@@ -1,0 +1,42 @@
+<div class="map-view">
+  <div class="list-section">
+    <div class="list">
+      <div class="list-item" *ngFor="let item of data; let i = index">
+        <div class="submission" [ngClass]="{'selected-submission': selectedIndex === i }"
+          (click)="submissionClickHandler(item,i)" #submission>
+          <div class="submission-name-section">
+            <h4>{{item?.profile?.name}}</h4>
+            <div [ngClass]="'status-'+item?.status">
+              <span [ngClass]="'circle-'+item?.status"></span>
+              {{statusMap[item?.status]}}
+            </div>
+          </div>
+          <div class="key-value-section">
+            <div class="key">From:</div>
+            <div class="value">{{item?.email}}</div>
+          </div>
+          <div class="key-value-section">
+            <div class="key">To:</div>
+            <div class="value">{{item?.email}}</div>
+          </div>
+          <div class="key-value-section">
+            <div class="key">Due Date:</div>
+            <div class="value" [ngClass]="{'past-due': pastDueDate(item?.due)}">{{item?.due | date : 'd MMMM'}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="loader">
+      <button mat-raised-button class="full-width" color="primary"
+        [disabled]="submissionService.isLoading || submissionService.isEndOfData"
+        (click)="submissionService.fetchNextPage()">
+        Load next page</button>
+    </div>
+  </div>
+  <div class="map-section">
+    <google-map width="100%" height="100%" [options]="options">
+      <map-marker #markerElem *ngFor="let marker of markers" [position]="marker.position" [label]="marker.label"
+        [title]="marker.title" [options]="marker.options" (mapClick)="openInfo(marker)"></map-marker>
+    </google-map>
+  </div>
+</div>

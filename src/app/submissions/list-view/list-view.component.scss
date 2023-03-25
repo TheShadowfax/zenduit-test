@@ -1,0 +1,25 @@
+@import '../../../assets/scss/submissions.scss';
+
+.th {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.only-on-hover {
+    display: none;
+}
+
+.selected,
+.tr:hover {
+    background: #F1F5F8 !important;
+    .only-on-hover {
+        display: inherit;
+    } 
+}
+
+.td {
+    font-size: 16px;
+    font-weight: 400;
+    color: #060C1B;
+    word-break: break-all;
+}

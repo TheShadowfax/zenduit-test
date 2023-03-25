@@ -1,0 +1,29 @@
+<nav aria-label="pagination">
+    <p>{{1+((current - 1) * 10)}} - {{((current - 1) * 10)+10}} of {{total}} submissions</p>
+    <ul>
+        <li>
+            <button mat-stroked-button aria-label="Go To Previous Page" [attr.aria-disabled]="current === 1" [disabled]="current === 1"
+                (click)="onPrevious()">
+                <mat-icon>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16.2541 4.24106C16.5522 4.53326 16.5793 4.99051 16.3354 5.31272L16.2541 5.40503L9.52658 12L16.2541 18.595C16.5522 18.8872 16.5793 19.3444 16.3354 19.6666L16.2541 19.7589C15.956 20.0511 15.4896 20.0777 15.161 19.8386L15.0668 19.7589L7.7459 12.582C7.44784 12.2898 7.42074 11.8325 7.66461 11.5103L7.7459 11.418L15.0668 4.24106C15.3947 3.91965 15.9262 3.91965 16.2541 4.24106Z" fill="#D0D0D2"/>
+                        </svg>
+                        
+                </mat-icon>
+            </button>
+        </li>
+        <li *ngFor="let page of pages;">
+            <button mat-stroked-button [class.current]="page === current" (click)="onGoTo(page)"> {{ page === -1 ? '...' : page }}</button>
+        </li>
+        <li>
+            <button mat-stroked-button aria-label="Go To Next Page" [attr.aria-disabled]="current === total" [disabled]="current === total"
+                (click)="onNext()">
+                <mat-icon>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.7459 19.7589C7.44784 19.4667 7.42074 19.0095 7.66461 18.6873L7.7459 18.595L14.4734 12L7.7459 5.40503C7.44784 5.11283 7.42074 4.65558 7.66461 4.33337L7.7459 4.24106C8.04396 3.94886 8.51037 3.9223 8.83904 4.16137L8.93321 4.24106L16.2541 11.418C16.5522 11.7102 16.5793 12.1675 16.3354 12.4897L16.2541 12.582L8.93321 19.7589C8.60534 20.0804 8.07376 20.0804 7.7459 19.7589Z" fill="#B8B9BC"/>
+                    </svg>                            
+                </mat-icon>
+            </button>
+        </li>
+    </ul>
+</nav>

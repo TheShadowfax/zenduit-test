@@ -1,0 +1,70 @@
+@import '../../../assets/scss/submissions.scss';
+.map-view {
+    padding: 22px 0;
+    display: flex;
+    gap: 20px;
+    height: calc(100vh - 350px);
+    overflow: hidden;
+}
+
+.list-section {
+    flex: 0 500px;
+    overflow-y: auto;
+    padding-right: 17px; /* Increase/decrease this value for cross-browser compatibility */
+    box-sizing: content-box; /* So the width will be 100% + 17px */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+.list-section::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+.map-section {
+    flex: 1;
+}
+
+.submission {
+    border: 1px solid #B8B9BC;
+    border-radius: 4px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap:8px;
+    margin-bottom: 8px;
+}
+
+.selected-submission {
+    border-color: #2188D9;;
+    box-shadow: 0 5px 5px -3px #0003, 0 8px 10px 1px #00000024, 0 3px 14px 2px #0000001f;
+}
+
+
+.submission-name-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    word-break: break-word;
+}
+
+.submission-name-section h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.key-value-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.key {
+    color: #B8B9BC;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.value {
+    font-weight: 400;
+    font-size: 16px;
+}

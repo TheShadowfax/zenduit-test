@@ -1,0 +1,50 @@
+
+.status-2, .status-1, .status-3 {
+    background: rgba(255, 61, 0, 0.1);
+    border: 1px solid #FF3D00;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 14px;
+    color: #FF3D00;
+    padding: 7px 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.status-1 {
+    color: #53D86A;
+    border-color: #53D86A;
+    background-color: #D7E5DA;
+}
+
+.status-3 {
+    background: #ECECED;
+    border-color: #B8B9BC;
+    color: #B8B9BC;
+}
+
+.circle-2, .circle-1, .circle-3 {
+    background-color: #FF3D00;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: block;
+}
+
+.circle-1 {
+    background-color: #53D86A;
+}
+
+.circle-3 {
+    background: #B8B9BC;
+}
+
+.past-due {
+    color: #FF3D00;
+}
+
+.loading {
+    font-size: 16px;
+    padding: 20px;
+}

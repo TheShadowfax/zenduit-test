@@ -1,0 +1,72 @@
+<div class="mat-elevation-z8" *ngIf="submissionService.dataSource$ | async as data">
+    <table mat-table [dataSource]="data">
+
+        <colgroup>
+            <col width="5%">
+            <col width="20%">
+            <col width="15%">
+            <col width="15%">
+            <col width="15%">
+            <col width="15%">
+        </colgroup>
+
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox ></mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let element" class="td"> <mat-checkbox class="only-on-hover" (change)="selection.toggle(element)"></mat-checkbox> </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="task">
+        <th mat-header-cell *matHeaderCellDef class="th"> Task </th>
+        <td mat-cell *matCellDef="let element" class="td"> {{element?.profile?.name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef class="th"> Status </th>
+        <td mat-cell *matCellDef="let element" class="td">
+            <div [ngClass]="'status-'+element?.status">
+                <span [ngClass]="'circle-'+element?.status"></span>
+                {{statusMap[element?.status]}}
+            </div>
+         </td>
+      </ng-container>
+
+      <ng-container matColumnDef="from">
+        <th mat-header-cell *matHeaderCellDef class="th"> From </th>
+        <td mat-cell *matCellDef="let element" class="td"> {{element?.email}}  </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="to">
+        <th mat-header-cell *matHeaderCellDef class="th"> To </th>
+        <td mat-cell *matCellDef="let element" class="td"> {{element?.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <th mat-header-cell *matHeaderCellDef class="th"> Customer Address </th>
+        <td mat-cell *matCellDef="let element" class="td"> {{element?.profile?.address}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="due">
+        <th mat-header-cell *matHeaderCellDef class="th"> Due Date </th>
+        <td mat-cell *matCellDef="let element" class="td">
+            <div class="value" [ngClass]="{'past-due': pastDueDate(element?.due)}">{{element?.due | date : 'd MMMM, hh:mm a'}}</div>
+         </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="tr" [ngClass]="{'selected': selection.isSelected(row)}"></tr>
+    </table>
+  </div>
+
+  <app-pagination
+  [current]="submissionService.currentPage"
+  [total]="submissionService.dataCount"
+  (goTo)="onGoTo($event)"
+  (next)="onNext($event)"
+  (previous)="onPrevious($event)"
+></app-pagination>
+  
